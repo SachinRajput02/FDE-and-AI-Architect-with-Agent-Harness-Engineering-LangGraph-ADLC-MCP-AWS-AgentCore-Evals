@@ -91,12 +91,12 @@ Replace the skeleton page. The queue: a table of claims with a status chip (wait
 
 Why: it gives the team the first three things the spec asks to see, before the live view adds the fourth.
 
-- [ ] `npx vitest run --root dashboard --coverage` passes with coverage over 80%, with `fetch` stubbed
-- [ ] `npx tsc` and ESLint pass in strict mode, with no `any`
-- [ ] With `npm run dev`, the Playwright MCP server shows the queue at `http://localhost:5173` with 25 claims, all "Waiting"
-- [ ] Clicking CLM-1001 shows its story, its three items with amounts like $245.00, its documents and the Premium plan
-- [ ] The instructions page shows the text of `backend/instructions.md` with no way to edit it
-- [ ] Screenshots in light and dark mode match the brand: Instrument Sans text, rounded panels with no outline, the page backgrounds `#F0F4F5` and `#04232E`
+- [x] `npx vitest run --root dashboard --coverage` passes with coverage over 80%, with `fetch` stubbed
+- [x] `npx tsc` and ESLint pass in strict mode, with no `any`
+- [x] With `npm run dev`, the Playwright MCP server shows the queue at `http://localhost:5173` with 25 claims, all "Waiting"
+- [x] Clicking CLM-1001 shows its story, its three items with amounts like $245.00, its documents and the Premium plan
+- [x] The instructions page shows the text of `backend/instructions.md` with no way to edit it
+- [x] Screenshots in light and dark mode match the brand: Instrument Sans text, rounded panels with no outline, the page backgrounds `#F0F4F5` and `#04232E`
 
 ## Phase 5: Live steps, sign-off and end-to-end tests
 

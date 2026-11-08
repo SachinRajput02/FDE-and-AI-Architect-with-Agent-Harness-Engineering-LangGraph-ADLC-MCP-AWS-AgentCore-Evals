@@ -1,19 +1,46 @@
 import { useEffect, useState } from "react";
+import { ClaimPage } from "./ClaimPage";
+import { Instructions } from "./Instructions";
+import { Queue } from "./Queue";
+
+function currentRoute(): string {
+  return window.location.hash.replace(/^#/, "") || "/";
+}
+
+function Page({ route }: Readonly<{ route: string }>) {
+  const claim = /^\/claims\/([\w-]+)$/.exec(route);
+  if (claim?.[1]) return <ClaimPage claimId={claim[1]} />;
+  if (route === "/instructions") return <Instructions />;
+  return <Queue />;
+}
 
 export function App() {
-  const [status, setStatus] = useState("checking");
+  const [route, setRoute] = useState(currentRoute);
 
   useEffect(() => {
-    void fetch("/api/health")
-      .then((response) => (response.ok ? "up" : "down"))
-      .catch(() => "down")
-      .then(setStatus);
+    const update = () => {
+      setRoute(currentRoute());
+    };
+    window.addEventListener("hashchange", update);
+    return () => {
+      window.removeEventListener("hashchange", update);
+    };
   }, []);
 
   return (
-    <main>
-      <h1>UnderCover</h1>
-      <p>Backend: {status}</p>
-    </main>
+    <>
+      <header className="top">
+        <a href="#/" className="brand">
+          UnderCover <span className="tagline">Claims</span>
+        </a>
+        <nav>
+          <a href="#/">Queue</a>
+          <a href="#/instructions">Agent instructions</a>
+        </nav>
+      </header>
+      <main>
+        <Page key={route} route={route} />
+      </main>
+    </>
   );
 }
