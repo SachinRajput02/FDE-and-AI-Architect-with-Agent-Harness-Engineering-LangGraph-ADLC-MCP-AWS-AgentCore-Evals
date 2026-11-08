@@ -78,12 +78,12 @@ Replace the skeleton agent. Tools that wrap the API: `get_claim`, `get_policy`, 
 
 Why this way: the agent holds no business rules of its own. It reads and acts through the same API as everyone else, so the backend's checks apply to it.
 
-- [ ] `uv run pytest -q agent` passes with coverage over 80%, using a stub model and the backend's `TestClient` on a temporary database
-- [ ] A stub run on CLM-1001 that reads the claim, approves $420.00 and pays leaves the claim `decided` and paid, with its tool calls, results and reply in `list_steps`
-- [ ] A stub run that approves $1,500.00 and then tries to pay gets the 409 back as a tool result; the claim stays `awaiting_signoff` and unpaid
-- [ ] The agent's system prompt equals what `get_instructions` returns (checked by a test)
-- [ ] The agent's tools reach the backend only through HTTP, and `agent/` has no reference to `data/` or `evals`
-- [ ] `uv run -m agent --help` prints the usage
+- [x] `uv run pytest -q agent` passes with coverage over 80%, using a stub model and the backend's `TestClient` on a temporary database
+- [x] A stub run on CLM-1001 that reads the claim, approves $420.00 and pays leaves the claim `decided` and paid, with its tool calls, results and reply in `list_steps`
+- [x] A stub run that approves $1,500.00 and then tries to pay gets the 409 back as a tool result; the claim stays `awaiting_signoff` and unpaid
+- [x] The agent's system prompt equals what `get_instructions` returns (checked by a test)
+- [x] The agent's tools reach the backend only through HTTP, and `agent/` has no reference to `data/` or `evals`
+- [x] `uv run -m agent --help` prints the usage
 
 ## Phase 4: The dashboard: queue, claim and instructions
 
