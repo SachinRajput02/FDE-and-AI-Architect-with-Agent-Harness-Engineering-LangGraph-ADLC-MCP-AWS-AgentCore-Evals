@@ -104,13 +104,13 @@ On the claim page, show the agent's steps as a timeline, polling every two secon
 
 Why: this completes what the team needs to see, and the end-to-end tests check the whole path, through the dashboard, without a model.
 
-- [ ] `npm run e2e` passes, with tests that:
-  - [ ] show the queue with 25 claims
-  - [ ] play an agent run on a claim through the API and see the steps appear on the open claim page without a reload, then the decision and reason
-  - [ ] approve a claim for $1,500.00 through the API, see "Waiting for sign-off", see that a payment through the API is refused, sign off in the dashboard as a handler who can, and see the claim decided and paid
-  - [ ] open the instructions page
-- [ ] The Playwright end-to-end run uses its own database and leaves `backend/undercover.db` unchanged
-- [ ] `npm run check` passes
+- [x] `npm run e2e` passes, with tests that:
+  - [x] show the queue with 25 claims
+  - [x] play an agent run on a claim through the API and see the steps appear on the open claim page without a reload, then the decision and reason
+  - [x] approve a claim for $1,500.00 through the API, see "Waiting for sign-off", see that a payment through the API is refused, sign off in the dashboard as a handler who can, and see the claim decided and paid
+  - [x] open the instructions page
+- [x] The Playwright end-to-end run uses its own database and leaves `backend/undercover.db` unchanged
+- [x] `npm run check` passes
 
 ## Phase 6: A real run, and the docs
 

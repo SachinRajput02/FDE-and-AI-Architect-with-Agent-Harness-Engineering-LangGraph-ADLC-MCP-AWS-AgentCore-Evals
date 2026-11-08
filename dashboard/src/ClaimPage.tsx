@@ -1,6 +1,8 @@
 import type { Claim, Policy } from "./api";
 import { decisionLabels, label, money } from "./format";
+import { SignOff } from "./SignOff";
 import { StatusChip } from "./StatusChip";
+import { Steps } from "./Steps";
 import { useJson } from "./useJson";
 
 function DecisionPanel({ claim }: Readonly<{ claim: Claim }>) {
@@ -109,7 +111,11 @@ function ClaimDetails({ claim }: Readonly<{ claim: Claim }>) {
 }
 
 export function ClaimPage({ claimId }: Readonly<{ claimId: string }>) {
-  const { data: claim, error } = useJson<Claim>(`/api/claims/${claimId}`, true);
+  const {
+    data: claim,
+    error,
+    reload,
+  } = useJson<Claim>(`/api/claims/${claimId}`, true);
 
   if (error)
     return (
@@ -133,10 +139,14 @@ export function ClaimPage({ claimId }: Readonly<{ claimId: string }>) {
       </p>
       <div className="columns">
         <div className="stack">
+          {claim.status === "awaiting_signoff" && (
+            <SignOff claim={claim} onSignedOff={reload} />
+          )}
           <DecisionPanel claim={claim} />
           <ClaimDetails claim={claim} />
         </div>
         <div className="stack">
+          <Steps claimId={claim.claim_id} status={claim.status} />
           <PolicyPanel policyId={claim.policy_id} />
         </div>
       </div>
