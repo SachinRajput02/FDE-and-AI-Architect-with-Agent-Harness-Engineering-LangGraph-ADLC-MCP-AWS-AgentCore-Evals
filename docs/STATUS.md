@@ -5,6 +5,7 @@ The claims pilot, in progress: see `docs/PLAN.md`.
 ## Built
 
 - `backend/`: FastAPI and SQLite. `backend/db.py` builds the database at `backend/undercover.db` (or `UNDERCOVER_DB`) from `data/`, leaving out the evaluation and security sets. The read API: `list_claims`, `get_claim`, `get_policy`, `get_claim_history`, `get_policy_wording`, `get_instructions` and `list_handlers`.
+- The claim workflow: `start_claim`, `record_step`, `list_steps`, `record_decision`, `pay_claim` and `sign_off_claim`. A claim is `waiting`, `in_progress`, `awaiting_signoff` or `decided`. `pay_claim` pays only the approved payout, once, and refuses any payout over the $1,000 limit in `data/company.json`. A handler's sign-off releases that payment.
 - `agent/`, `dashboard/` and `e2e/`: still the hello-world skeleton.
 
 ## Running it

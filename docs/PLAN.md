@@ -62,15 +62,15 @@ Add `start_claim`, `record_step`, `list_steps`, `record_decision`, `pay_claim` a
 
 Why now: the rules are the part that must be right whatever the agent does, so they are built and tested before the agent exists.
 
-- [ ] `uv run pytest -q backend` passes with coverage over 80%
-- [ ] `start_claim` moves a `waiting` claim to `in_progress`, and returns 409 for any other state
-- [ ] `record_step` and `list_steps` store and return steps in order, with a kind (`tool_call`, `tool_result`, `reply`), a short text and a timestamp
-- [ ] Declining or referring with a payout above 0 returns 422
-- [ ] Approving $420.00 moves the claim to `decided`; `pay_claim` with 420.00 records the payment; paying again returns 409
-- [ ] `pay_claim` with an amount other than the approved payout returns 409
-- [ ] Approving $1,500.00 moves the claim to `awaiting_signoff`, and `pay_claim` with 1500.00 returns 409 with a message that a handler's sign-off is needed
-- [ ] `sign_off_claim` by a handler who can't approve over the limit returns 403; by one who can, it records the sign-off and the payment and moves the claim to `decided`
-- [ ] Paying a declined, referred or undecided claim returns 409
+- [x] `uv run pytest -q backend` passes with coverage over 80%
+- [x] `start_claim` moves a `waiting` claim to `in_progress`, and returns 409 for any other state
+- [x] `record_step` and `list_steps` store and return steps in order, with a kind (`tool_call`, `tool_result`, `reply`), a short text and a timestamp
+- [x] Declining or referring with a payout above 0 returns 422
+- [x] Approving $420.00 moves the claim to `decided`; `pay_claim` with 420.00 records the payment; paying again returns 409
+- [x] `pay_claim` with an amount other than the approved payout returns 409
+- [x] Approving $1,500.00 moves the claim to `awaiting_signoff`, and `pay_claim` with 1500.00 returns 409 with a message that a handler's sign-off is needed
+- [x] `sign_off_claim` by a handler who can't approve over the limit returns 403; by one who can, it records the sign-off and the payment and moves the claim to `decided`
+- [x] Paying a declined, referred or undecided claim returns 409
 
 ## Phase 3: The UnderCover Agent
 
