@@ -1,4 +1,4 @@
-import type { Status, Step } from "./api";
+import type { Step } from "./api";
 import { useJson } from "./useJson";
 
 const kindLabels: Record<Step["kind"], string> = {
@@ -7,14 +7,8 @@ const kindLabels: Record<Step["kind"], string> = {
   reply: "Says",
 };
 
-export function Steps({
-  claimId,
-  status,
-}: Readonly<{ claimId: string; status: Status }>) {
-  const { data: steps } = useJson<Step[]>(
-    `/api/claims/${claimId}/steps`,
-    status !== "decided",
-  );
+export function Steps({ claimId }: Readonly<{ claimId: string }>) {
+  const { data: steps } = useJson<Step[]>(`/api/claims/${claimId}/steps`, true);
   return (
     <section className="panel" aria-label="Agent steps">
       <h2>What the agent did</h2>

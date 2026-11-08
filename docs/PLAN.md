@@ -118,11 +118,11 @@ Run the real agent on a few claims and watch it in the dashboard. Fix what the r
 
 Why: the tests prove the plumbing with a stub; this proves it works with the real model. Scoring the agent against the handlers' decisions in `data/evals/` is for the labs, so this phase doesn't open them.
 
-- [ ] `uv run -m agent CLM-1001` runs with the configured model, records a decision with a payout, a two- or three-sentence reason and a policy section, and prints the reply
-- [ ] While it runs, the Playwright MCP server shows the claim "In progress" with the steps appearing, then "Decided"
-- [ ] `uv run -m agent queue` works through five more waiting claims; any approval over $1,000 is left waiting for sign-off and unpaid
-- [ ] `docs/STATUS.md` describes the build, the commands (`npm run dev`, `npm run reset`, `uv run -m agent`) and the claim states
-- [ ] `npm run check` passes
+- [x] `uv run -m agent CLM-1001` runs with the configured model, records a decision with a payout, a two- or three-sentence reason and a policy section, and prints the reply
+- [x] While it runs, the Playwright MCP server shows the claim "In progress" with the steps appearing, then "Decided"
+- [x] `uv run -m agent queue` works through five more waiting claims; any approval over $1,000 is left waiting for sign-off and unpaid
+- [x] `docs/STATUS.md` describes the build, the commands (`npm run dev`, `npm run reset`, `uv run -m agent`) and the claim states
+- [x] `npm run check` passes
 
 ## Choices to review
 

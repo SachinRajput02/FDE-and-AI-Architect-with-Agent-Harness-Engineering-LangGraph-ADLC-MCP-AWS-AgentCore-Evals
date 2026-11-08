@@ -146,7 +146,7 @@ export function ClaimPage({ claimId }: Readonly<{ claimId: string }>) {
           <ClaimDetails claim={claim} />
         </div>
         <div className="stack">
-          <Steps claimId={claim.claim_id} status={claim.status} />
+          <Steps claimId={claim.claim_id} />
           <PolicyPanel policyId={claim.policy_id} />
         </div>
       </div>
